@@ -4,35 +4,16 @@
 
 using namespace std;
 
-class MyClass{
-    public:
-    string name;
-    string n;
-    MyClass(string name, string n):name(name),n(n){}
-};
+int i;
 
-bool cmp(MyClass a, MyClass b){
-    if(a.n < b.n)
-        return true;
-    else if(a.n == b.n) {
-        if(a.name < b.name) return true;
-        return false;
-    }
-    else if(a.n > b.n)
-        return false;
+bool cmp(string a, string b){
+    return (a[i] == b[i]) ? a < b : a[i] < b[i]; 
 }
 
 vector<string> solution(vector<string> strings, int n) {
-    vector<string> answer;
-    vector<MyClass> mystr;
+    i = n;
     
-    for(string str : strings) 
-        mystr.push_back(MyClass(str, str.substr(n,1)));
-    
-    sort(mystr.begin(), mystr.end(), cmp);
+    sort(strings.begin(), strings.end(), cmp);
 
-    for(MyClass myClass : mystr) 
-        answer.push_back(myClass.name);
-    
-    return answer;
+    return strings;
 }

@@ -35,11 +35,10 @@ string solving(string p) {
     
     string u = p.substr(0,i);
     string v = p.substr(i);
-    //cout << u << " " << v << endl;
     
     if(wrong) {
         string temp = "(" + solving(v) + ")";
-        return reverse(temp) + cut(u);
+        return temp + reverse(cut(u));
     }
     else { 
         return u + solving(v);
